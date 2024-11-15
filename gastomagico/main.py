@@ -35,7 +35,9 @@ def menu_gestion_tablas() -> None:
         console.print("4. Listar Categorías")
         console.print("5. Listar Métodos de Pago")
         console.print("6. Listar Frases Motivacionales")
-        console.print("7. Regresar al Menú Principal")
+        console.print("7. Eliminar Categoría")
+        console.print("8. Eliminar Método de Pago")
+        console.print("9. Regresar al Menú Principal")
         opcion: str = input("Selecciona una opción: ")
         if opcion == '1':
             agregar_categoria()
@@ -50,9 +52,57 @@ def menu_gestion_tablas() -> None:
         elif opcion == '6':
             listar_frases()
         elif opcion == '7':
+            eliminar_categoria()
+        elif opcion == '8':
+            eliminar_metodo_pago()
+        elif opcion == '9':
             break
         else:
             console.print("[red]Opción inválida[/red]")
+
+def eliminar_categoria() -> None:
+    """
+    Función para eliminar una categoría.
+    """
+    listar_categorias()
+    id_categoria = input("Ingrese el ID de la categoría a eliminar: ")
+    try:
+        id_categoria = int(id_categoria)
+    except ValueError:
+        console.print("[red]ID inválido[/red]")
+        return
+
+    categoria = session.query(Categoria).filter_by(id=id_categoria).first()
+    if not categoria:
+        console.print("[red]Categoría no encontrada[/red]")
+        return
+
+    session.delete(categoria)
+    session.commit()
+    console.print("[green]Categoría eliminada correctamente[/green]")
+    mostrar_frase_motivacional(session)
+
+def eliminar_metodo_pago() -> None:
+    """
+    Función para eliminar un método de pago.
+    """
+    listar_metodos_pago()
+    id_metodo = input("Ingrese el ID del método de pago a eliminar: ")
+    try:
+        id_metodo = int(id_metodo)
+    except ValueError:
+        console.print("[red]ID inválido[/red]")
+        return
+
+    metodo_pago = session.query(MetodoPago).filter_by(id=id_metodo).first()
+    if not metodo_pago:
+        console.print("[red]Método de pago no encontrado[/red]")
+        return
+
+    session.delete(metodo_pago)
+    session.commit()
+    console.print("[green]Método de pago eliminado correctamente[/green]")
+    mostrar_frase_motivacional(session)
 
 def agregar_gasto() -> None:
     """
