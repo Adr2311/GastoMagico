@@ -1,8 +1,9 @@
-from sqlalchemy import Column, Integer, String, Float, ForeignKey, DateTime, func
-from sqlalchemy.orm import relationship, declarative_base
-from typing import Any
+# utils/models.py
 
-Base = declarative_base()
+from sqlalchemy import Column, Integer, String, Float, ForeignKey, DateTime, func
+from sqlalchemy.orm import relationship
+from utils.database import Base
+from typing import Any
 
 class Categoria(Base):
     """
