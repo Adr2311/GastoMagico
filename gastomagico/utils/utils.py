@@ -1,5 +1,4 @@
 from rich.console import Console
-from typing import Any
 import random
 from sqlalchemy.orm import Session
 
@@ -12,7 +11,7 @@ def mostrar_frase_motivacional(session: Session) -> None:
     Args:
         session (Session): Sesión de base de datos.
     """
-    from models import Frase
+    from gastomagico.utils.models import Frase
     frases = session.query(Frase).all()
     if frases:
         frase = random.choice(frases)
