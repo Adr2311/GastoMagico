@@ -7,6 +7,7 @@ from typing import List, Optional
 def menu_gestion_gastos() -> None:
     """
     Menú para la gestión de gastos.
+
     """
     while True:
         console.print("\n[bold cyan]Gestión de Gastos[/bold cyan]")
