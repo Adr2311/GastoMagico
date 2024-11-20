@@ -143,7 +143,12 @@ def menu_interactivo():
         else:
             console.print("[red]Opción inválida[/red]")
 
-def menu_gestion_gastos():
+
+def menu_gestion_gastos() -> None:
+    """
+    Menú para la gestión de gastos.
+
+    """
     while True:
         console.print("\n[bold cyan]Gestión de Gastos[/bold cyan]")
         console.print("1. Agregar Gasto")
