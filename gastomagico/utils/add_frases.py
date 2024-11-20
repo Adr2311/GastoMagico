@@ -1,4 +1,4 @@
-from database import session
+from gastomagico.utils.database import session
 from models import Frase
 
 def agregar_frases() -> None:
