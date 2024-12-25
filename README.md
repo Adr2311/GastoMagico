@@ -23,7 +23,7 @@ GastoMágico es una aplicación web diseñada para el control personal de gastos
 
 1. **Clonar el repositorio**
     ```bash
-    git clone https://github.com/tu-usuario/GastoMagico.git
+    git clone https://github.com/abdielLopezpy/GastoMagico.git
     cd GastoMagico
     ```
 
