@@ -1,3 +1,17 @@
+# Copyright 2024 Abdiel Lopez
+# 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# 
+#     https://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 #!/bin/bash
 
 # Script para configurar la aplicación GastoMágico
@@ -5,8 +19,8 @@
 # Salir inmediatamente si un comando falla
 set -e
 
-# Nombre del directorio del proyecto
-PROJECT_DIR="GastoMagico"
+# Nombre del directorio del proyecto (todo en minúsculas para consistencia)
+PROJECT_DIR="gastomagico"
 
 # Crear el directorio del proyecto
 mkdir -p "$PROJECT_DIR"
@@ -48,7 +62,7 @@ def init_db():
     from gastomagico.models.metodo_pago import MetodoPago
     from gastomagico.models.gasto import Gasto
     from gastomagico.models.frase_motivacional import FraseMotivacional
-    from gastomagico.models.configuracion import Configuracion  # Agregar esta línea
+    from gastomagico.models.configuracion import Configuracion
 
     # Crear todas las tablas
     Base.metadata.create_all(bind=engine)
@@ -121,15 +135,6 @@ def init_db():
     finally:
         db.close()
 
-def get_db():
-    """
-    Genera una sesión de base de datos.
-    """
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
 EOF
 
 # Crear models/categoria.py
@@ -1024,16 +1029,12 @@ echo "Creando el entorno virtual..."
 python3 -m venv .venv
 
 # Activar el entorno virtual
-echo "Activando el entorno virtual..."
-source .venv/bin/activate
 
 # Actualizar pip
 echo "Actualizando pip..."
 pip install --upgrade pip
 
 # Instalar dependencias
-echo "Instalando dependencias..."
-pip install PyQt5 sqlalchemy pandas openpyxl
 
 # Desactivar el entorno virtual
 deactivate
